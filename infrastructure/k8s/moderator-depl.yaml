@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: query-deployment
+  labels:
+    app: moderator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: moderator
+  template:
+    metadata:
+      labels:
+        app: moderator
+    spec:
+      containers:
+        - name: query-api
+          image: guszti/posts-moderator-service
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: moderator-srv
+spec:
+  type: ClusterIP
+  selector:
+    app: moderator
+  ports:
+    - name: moderator
+      protocol: TCP
+      port: 4003
+      targetPort: 4003
