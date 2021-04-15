@@ -47,7 +47,7 @@ app.listen(4002, () => {
     console.log("Query service is listening on port 4002");
 
     try {
-        const {body} = axios.get("http://event-bus-srv:4005/events");
+        const {body} = axios.get("http://event-bus-srv/events");
 
         for (let event of body) {
             handleEvent(event.type, event.payload);
