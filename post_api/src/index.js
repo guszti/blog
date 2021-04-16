@@ -17,7 +17,7 @@ app.post("/post/create", async (req, res) => {
     posts[id] = post;
 
     try {
-        await axios.post("http://event-bus-srv/events", {
+        await axios.post("http://event-bus-srv:4005/events", {
             type: "PostCreated",
             payload: post
         });
@@ -35,8 +35,6 @@ app.get("/post", (req, res) => {
 });
 
 app.post("/events", (req, res) => {
-    console.log(req.body);
-
     res.send({status: 200});
 })
 

@@ -31,8 +31,8 @@ const handleEvent = (type, payload) => {
     }
 }
 
-app.get("/post", (req, res) => {
-    res.send(postsWithComments);
+app.get("/posts", (req, res) => {
+    res.send(JSON.stringify(postsWithComments));
 });
 
 app.post("/events", (req, res) => {
@@ -43,13 +43,13 @@ app.post("/events", (req, res) => {
     res.send({status: 200});
 });
 
-app.listen(4002, () => {
+app.listen(4002, async () => {
     console.log("Query service is listening on port 4002");
 
     try {
-        const {body} = axios.get("http://event-bus-srv/events");
+        const {data} = await axios.get("http://event-bus-srv:4005/events");
 
-        for (let event of body) {
+        for (let event of data) {
             handleEvent(event.type, event.payload);
         }
     } catch (e) {

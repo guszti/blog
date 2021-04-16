@@ -15,7 +15,7 @@ spec:
         app: moderator
     spec:
       containers:
-        - name: query-api
+        - name: moderator-service
           image: guszti/posts-moderator-service
 
 ---

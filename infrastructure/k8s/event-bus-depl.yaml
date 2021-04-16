@@ -13,7 +13,7 @@ spec:
         app: event-bus
     spec:
       containers:
-        - name: query-api
+        - name: event-bus
           image: guszti/posts-event-bus
 
 ---

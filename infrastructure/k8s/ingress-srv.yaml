@@ -14,7 +14,7 @@ spec:
             backend:
               serviceName: post-clusterip-srv
               servicePort: 4000
-          - path: /post
+          - path: /posts
             backend:
               serviceName: query-clusterip-srv
               servicePort: 4002
