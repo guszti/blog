@@ -7,7 +7,7 @@ app.use(bodyParser.json());
 
 const receivedEvents = [];
 
-app.post("/events", async (req, res) => {
+app.post("/events", (req, res) => {
     const event = req.body;
 
     try {
@@ -21,7 +21,7 @@ app.post("/events", async (req, res) => {
 
     receivedEvents.push(event);
 
-    await res.send({status: 200});
+    res.send({status: 200});
 });
 
 app.get("/events", (req, res) => {
